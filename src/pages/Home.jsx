@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import { ACTION_TYPES } from "../constants";
 // import SecondNavBar from "../component/SecondNavBar";
 import "../All-Css-Files/home.css";
-
+//Here start home page
 const Home = () => {
   const [newfilterdata, setnewfilterdata] = useState([]);
   const [searchData, setsearchData] = useState("");
