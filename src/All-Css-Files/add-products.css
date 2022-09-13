@@ -1,0 +1,26 @@
+.mian-container {
+  background-color: #eee7ce;
+  height: 60rem;
+}
+.add-products-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+}
+.text-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 73%;
+  width: 300px;
+  gap: 25px;
+  padding: 30px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: larger;
+}
+.add-products-container {
+  justify-content: center;
+  align-items: center;
+}

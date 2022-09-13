@@ -1,0 +1,14 @@
+
+.form_box{
+    display: flex;
+    height: 100%;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    background-color: antiquewhite;
+
+}
+.box{
+    margin-top: 10px;
+}

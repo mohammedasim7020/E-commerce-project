@@ -1,0 +1,17 @@
+.container_for_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35rem;
+}
+.input_filed {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  /* height: 73%; */
+gap: 15px;
+  padding: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: larger;
+}
