@@ -14,7 +14,6 @@ import AddToCart from "./pages/AddToCart";
 import AddressPage from "./pages/AddressPage";
 import OrderHistory from "./component/OrderHistory";
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [data, setData] = useState({});
@@ -40,7 +39,7 @@ function App() {
     const fetchedData = fetchAllProducts();
     fetchedData.then((res) => {
       const data = res.data;
-
+      console.log(data);
       dispatch({
         type: ACTION_TYPES.ADD_PRODUCTS,
         payload: { data },
@@ -53,9 +52,9 @@ function App() {
       <div>
         <Router>
           <NavBar setData={setData} data={data} isLoggedIn={isLoggedIn} />
-          
+
           <Routes>
-            <Route exact path="/Home" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route
               exact
               path="/LogIn"
@@ -67,8 +66,12 @@ function App() {
             <Route exact path="/AddProduct" element={<AddProducts />} />
 
             <Route exact path="/AddToCart" element={<AddToCart />}></Route>
-            <Route exact path="/Address" element={<AddressPage/>}></Route>
-            <Route exact path="/orderHistory" element={<OrderHistory/>}></Route>
+            <Route exact path="/Address" element={<AddressPage />}></Route>
+            <Route
+              exact
+              path="/orderHistory"
+              element={<OrderHistory />}
+            ></Route>
           </Routes>
         </Router>
       </div>

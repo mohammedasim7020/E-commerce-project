@@ -8,7 +8,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 15px;
+  gap: 10px;
   margin: 20px;
   align-items: center;
   justify-content: space-around;
@@ -42,10 +42,11 @@
   display: flex;
   height: 4rem;
   width: 100vw;
+ 
 }
 .right-side-nav{
   display: flex;
-  width: 40vw;
+  width: 50vw;
   justify-content: space-around;
   align-items: center;
 }
@@ -57,6 +58,6 @@
 }
 .for-sort{
   display: flex;
-  width: 20vw;
+  width: 10vw;
   justify-content: flex-end;
 }

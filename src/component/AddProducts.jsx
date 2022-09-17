@@ -18,7 +18,7 @@ const AddProducts = () => {
   const dispatch = useDispatch();
 
   const [id, setId] = useState("");
-  const [categroy, setCategroy] = useState("");
+  const [category, setCategroy] = useState("");
   const [title, setTitle] = useState("");
   const [rate, setRate] = useState("");
   const [price, setPrice] = useState("");
@@ -27,7 +27,7 @@ const AddProducts = () => {
   let object = {
     id,
     title,
-    categroy,
+    category,
     rate,
     price,
   };
@@ -84,7 +84,7 @@ const AddProducts = () => {
               id="outlined-basic"
               label="Enter Categroy"
               variant="outlined"
-              value={categroy}
+              value={category}
               name="Categroy"
               onChange={(e) => {
                 updateInputValue(e, setCategroy);

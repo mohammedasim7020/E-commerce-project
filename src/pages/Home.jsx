@@ -1,12 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
+import SimpleImageSlider from "react-simple-image-slider";
+import SortSharpIcon from '@mui/icons-material/SortSharp';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 import { ACTION_TYPES } from "../constants";
 // import SecondNavBar from "../component/SecondNavBar";
 import "../All-Css-Files/home.css";
+
+const images = [
+  {
+    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/e0fcdef437f82323.jpg?q=50",
+  },
+  {
+    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/a0a5d1c6f8df28b8.jpg?q=50",
+  },
+  {
+    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/1d271d50a63cc18a.jpg?q=50",
+  },
+  // { url: "image.png" },
+  // { url: "images/5.jpg" },
+  // { url: "images/6.jpg" },
+  // { url: "images/7.jpg" },
+];
+
 //Here start home page
 const Home = () => {
   const [newfilterdata, setnewfilterdata] = useState([]);
@@ -20,7 +40,6 @@ const Home = () => {
       // inputValue: state.input_data,
     };
   });
-
   const { products } = allProducts;
 
   const handleSearch = (event) => {
@@ -67,18 +86,33 @@ const Home = () => {
           </div>
           <div className="left-side-nav">
             <TextField
+              sx={{ width: "90rem" }}
               label="Search..."
               id="outlined-size-small"
               size="small"
               value={searchData}
               onChange={(event) => handleSearch(event)}
             />
-            <Button variant="contained">Search</Button>
+            {/* <Button variant="contained">Search</Button> */}
           </div>
           <div className="for-sort">
-            <h5>Sort</h5>
+            <h4>
+              Sort
+              <SortSharpIcon />
+            </h4>
           </div>
         </div>
+      </section>
+      <section>
+        <SimpleImageSlider
+          width={1330}
+          height={350}
+          paddin={50}
+          images={images}
+          showBullets={true}
+          showNavs={true}
+          autoPlay={true}
+        />
       </section>
       <div className="main">
         <div className="front_page">
@@ -98,7 +132,19 @@ const Home = () => {
                         height="130px"
                       />
                       <h5 className="for-title">{product.title}</h5>
-                      <h4>Rating {product.rating.rate}</h4>
+                      {/* <h4>Rating {product.rating.rate}</h4> */}
+                      <Rating
+                        name="text-feedback"
+                        value={product.rating.rate}
+                        readOnly
+                        precision={0.5}
+                        emptyIcon={
+                          <StarIcon
+                            style={{ opacity: 0.55 }}
+                            fontSize="inherit"
+                          />
+                        }
+                      />
                       <h4>Price ${product.price}</h4>
 
                       <Button

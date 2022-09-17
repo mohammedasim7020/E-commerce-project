@@ -20,12 +20,12 @@ const store = configureStore({
         };
 
       case ACTION_TYPES.ADD_NEW_PRODUCT:
-        const { id, categroy, title, rate, price } = payload;
+        const { id, category, title, rate, price } = payload;
         return {
           ...state,
           product: [
             ...state.product,
-            { id, categroy, title, rating: { rate }, price },
+            { id, category, title, rating: { rate }, price },
           ],
         };
 

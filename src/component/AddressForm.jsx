@@ -4,8 +4,24 @@ import { Button, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 import updateInputValue from "../utils/genral";
-import "../All-Css-Files/address-form.css"
+import "../All-Css-Files/address-form.css";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "#FFFFFF",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 const AddressForm = () => {
   const [fullName, setFullName] = useState("");
@@ -15,8 +31,12 @@ const AddressForm = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [pinCode, setPinCode] = useState("");
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const obj = {
     fullName,
@@ -25,33 +45,30 @@ const AddressForm = () => {
     city,
     state,
     country,
-    pinCode
-  }
+    pinCode,
+  };
 
- const cart = useSelector((state)=>{
-  return state.cart
- })
+  const cart = useSelector((state) => {
+    return state.cart;
+  });
 
-
-
-const addressData =()=>{
-   dispatch({
-    type:'addressDetails',
-    payload: {
-            cart,
-      addressDetails:obj
-    }
-   })
-   navigate("/orderHistory")
-}
+  const addressData = () => {
+    dispatch({
+      type: "addressDetails",
+      payload: {
+        cart,
+        addressDetails: obj,
+      },
+    });
+    navigate("/orderHistory");
+  };
   return (
-   
     <div className="form_box">
       <Box
-      className="box"
+        className="box"
         sx={{
           border: 1,
-          padding:5,
+          padding: 5,
           width: 330,
           height: 500,
           backgroundColor: " #E6E6FA",
@@ -69,7 +86,7 @@ const addressData =()=>{
           label="Full Name"
           variant="outlined"
           value={fullName}
-          onChange={(event)=>updateInputValue(event,setFullName)}
+          onChange={(event) => updateInputValue(event, setFullName)}
         />
         <TextField
           type="text"
@@ -77,8 +94,7 @@ const addressData =()=>{
           label="Full Address"
           variant="outlined"
           value={address}
-          onChange={(event)=>updateInputValue(event,setAddress)}
-
+          onChange={(event) => updateInputValue(event, setAddress)}
         />
         <TextField
           type="text"
@@ -86,7 +102,7 @@ const addressData =()=>{
           label="Apartment,suit,etc."
           variant="outlined"
           value={apartment}
-          onChange={(event)=>updateInputValue(event,setApartment)}
+          onChange={(event) => updateInputValue(event, setApartment)}
         />
         <TextField
           type="text"
@@ -94,7 +110,7 @@ const addressData =()=>{
           label="City"
           variant="outlined"
           value={city}
-          onChange={(event)=>updateInputValue(event,setCity)}
+          onChange={(event) => updateInputValue(event, setCity)}
         />
         <TextField
           type="text"
@@ -102,7 +118,7 @@ const addressData =()=>{
           label=" State"
           variant="outlined"
           value={state}
-          onChange={(event)=>updateInputValue(event,setState)}
+          onChange={(event) => updateInputValue(event, setState)}
         />
 
         <TextField
@@ -111,18 +127,44 @@ const addressData =()=>{
           label=" country"
           variant="outlined"
           value={country}
-          onChange={(event)=>updateInputValue(event,setCountry)}
+          onChange={(event) => updateInputValue(event, setCountry)}
         />
-         <TextField
+        <TextField
           type="text"
           id="outlined-basic"
           label="PinCode"
           variant="outlined"
           value={pinCode}
-          onChange={(event)=>updateInputValue(event,setPinCode)}
+          onChange={(event) => updateInputValue(event, setPinCode)}
         />
-        <Button variant="contained" onClick={()=>addressData()}>Add Delivery Address</Button>
+        <Button variant="contained" onClick={() => handleOpen()}>
+          Add Delivery Address
+        </Button>
       </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography
+            id="modal-modal-description"
+            sx={{ mt: 2, fontSize: "large" }}
+          >
+            <CheckCircleOutlineIcon sx={{ color: "green" }} /> Congratulation
+            Your Order Is successfully
+          </Typography>
+
+          <Button
+            sx={{ margin: 3 }}
+            variant="contained"
+            onClick={() => addressData()}
+          >
+            Ok
+          </Button>
+        </Box>
+      </Modal>
     </div>
   );
 };

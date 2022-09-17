@@ -31,7 +31,7 @@ const AddToCart = () => {
   const [total, setTotal] = useState();
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => {
     return state.cart;
@@ -93,69 +93,75 @@ const AddToCart = () => {
     });
   };
 
-  const goToAddressPage = ()=> {
-    navigate("/Address")
-  }
+  const goToAddressPage = () => {
+    navigate("/Address");
+  };
 
   return (
-    <>  <div className="flex">
-      <div className="main_addtocard_div">
-        {cartProducts.length === 0 ? (
-          <div>No Product Available</div>
+    <>
+      {" "}
+      <div className="flex">
+        <div className="main_addtocard_div">
+          {cartProducts.length === 0 ? (
+            <div>No Product Available</div>
           ) : (
-          cartProducts.map((item, index) => {
-            return (
-              <>
-                <div key={index} className="parent">
-                  <div className="img_container">
-                    
-                    <img
-                      className="addToCart_img"
-                      src={item.image}
-                      alt="couden't respond"
-                      width="150px"
-                      height="150px"
-                    />
-                    <div className="product_details">
-                      <h3>{item.title}</h3>
-                      <p className="discription">{item.description}</p>
-                      <h3>Price : {item.price}</h3>
-                      <div className="qty_container">
-                        <Button
-                          className="btn"
-                          variant="contained"
-                          onClick={() => {
-                            handleQtyDecrement(item);
-                          }}
+            cartProducts.map((item, index) => {
+              return (
+                <>
+                  <div key={index} className="parent">
+                    <div className="img_container">
+                      <img
+                        className="addToCart_img"
+                        src={item.image}
+                        alt="couden't respond"
+                        width="150px"
+                        height="150px"
+                      />
+                      <div className="product_details">
+                        <h3>{item.title}</h3>
+                        <p className="discription">{item.description}</p>
+                        <h3>Price : {item.price}</h3>
+                        <div className="qty_container">
+                          <Button
+                            className="btn"
+                            variant="contained"
+                            onClick={() => {
+                              handleQtyDecrement(item);
+                            }}
                           >
-                          -{" "}
-                        </Button>
-                        <h4>{item.quantity}</h4>
-                        <Button
-                          className="btn"
-                          variant="contained"
-                          onClick={() => handleQtyIncrement(item)}
+                            -{" "}
+                          </Button>
+                          <h4>{item.quantity}</h4>
+                          <Button
+                            className="btn"
+                            variant="contained"
+                            onClick={() => handleQtyIncrement(item)}
                           >
-                          {" "}
-                          +{" "}
-                        </Button>
+                            {" "}
+                            +{" "}
+                          </Button>
+                        </div>
                       </div>
-                     
+                      <div className="delete_icon">
+                        <DeleteForeverIcon onClick={() => handleRemove(item)} />
+                      </div>
                     </div>
-                    <div className="delete_icon">
-                  <DeleteForeverIcon onClick={() => handleRemove(item)} />
                   </div>
-                  </div>
-                </div>
-              </>
-            );
-          })
+                </>
+              );
+            })
+          )}
+        </div>
+        {cartProducts.length === 0 ? (
+          ""
+        ) : (
+          <div className="price_container">
+            <h2>Your Total is:{total}</h2>
+            <Button variant="contained" onClick={() => goToAddressPage()}>
+              PlaceOrder
+            </Button>
+          </div>
         )}
-      </div>
-                <div className="price_container">
-                  <h2>Your Total is:{total}</h2>
-                  <Button variant="contained" onClick={()=>goToAddressPage()}>PlaceOrder</Button>
-                </div>
       </div>
     </>
   );

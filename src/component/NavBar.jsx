@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
+import LogoutSharpIcon from "@mui/icons-material/LogoutSharp";
+import PlaylistAddCircleSharpIcon from "@mui/icons-material/PlaylistAddCircleSharp";
 
 import { LOCLA_STOREGE_LOGGED_KEY } from "../constants";
-
+import { Button } from "@mui/material";
 
 const NavBar = (props) => {
   const selector = useSelector((state) => {
@@ -55,7 +57,7 @@ const NavBar = (props) => {
 
   const goToHome = (e) => {
     e.preventDefault();
-    navigate("/Home");
+    navigate("/");
   };
 
   return (
@@ -64,60 +66,51 @@ const NavBar = (props) => {
         <div className="Navigation-rigthside">
           <h2 onClick={(e) => goToHome(e)}>E-Commerce</h2>
         </div>
-        {/* <input
-          type={searchData}
-          placeholder="Search"
-          onChange={(e) => handleSearch(e)}
-        />
-
-        <Button
-          variant="contained"
-          className="button_from_nav"
-          onClick={handleSearchData}
-        >
-          Search
-        </Button> */}
 
         <div className="navigation_leftside">
-          <h4>
-            <Link className="link" to="/LogIn">
-              {isLoggedIn ? "" : "login"}
-            </Link>
-          </h4>
-
-          <h4>
-            <Link className="link" to="/SingUp">
-              {isLoggedIn ? "" : "SingUp"}
-            </Link>
-          </h4>
-
-          <h4>
-            <Link className="link" to="/username">
-              {isLoggedIn ? data.username : ""}
-            </Link>
-          </h4>
-
-          <Link className="link" to="/AddProduct">
-            {isLoggedIn ? "Add Products" : ""}
+          <Link className="link" to="/LogIn">
+            {isLoggedIn ? (
+              ""
+            ) : (
+              <Button variant="contained" sx={{ background: "blue" }}>
+                {"login"}
+              </Button>
+            )}
           </Link>
 
-          <StyledBadge badgeContent={lengthArray + 1} color="secondary">
-            <Link to="/addToCart" className="link">
-              {isLoggedIn ? (
+          <Link className="link" to="/SingUp">
+            {isLoggedIn ? (
+              ""
+            ) : (
+              <Button variant="contained" sx={{ background: "blue" }}>
+                SingUp
+              </Button>
+            )}
+          </Link>
+
+          <h4 style={{color:"white"}}>{isLoggedIn ? data.username : ""}</h4>
+
+          <Link className="link" to="/AddProduct">
+            {isLoggedIn ? <PlaylistAddCircleSharpIcon /> : ""}
+          </Link>
+
+          <Link to="/addToCart" className="link">
+            {isLoggedIn ? (
+              <StyledBadge badgeContent={lengthArray + 1} color="secondary">
                 <AddShoppingCartIcon
                   onClick={() => {
                     navigate("/AddToCart");
                   }}
                 />
-              ) : (
-                ""
-              )}
-              cart
-            </Link>
-          </StyledBadge>
+                Cart
+              </StyledBadge>
+            ) : (
+              ""
+            )}
+          </Link>
 
           <h4 className="btn" onClick={logoutuser}>
-            {isLoggedIn ? "LogOut" : ""}
+            {isLoggedIn ? <LogoutSharpIcon sx={{ color: "white" }} /> : ""}
           </h4>
         </div>
       </div>

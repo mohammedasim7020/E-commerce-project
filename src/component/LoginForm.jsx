@@ -35,7 +35,7 @@ export default function LoginForm(props) {
       if (result) {
         setData(result);
         localStorage.setItem(LOCLA_STOREGE_LOGGED_KEY, JSON.stringify(result));
-        history("/Home");
+        history("/");
       } else {
         alert("invalid user");
       }
