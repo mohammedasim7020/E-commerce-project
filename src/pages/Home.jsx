@@ -107,7 +107,7 @@ const Home = () => {
         <SimpleImageSlider
           width={1330}
           height={350}
-          paddin={50}
+          paddin={5}
           images={images}
           showBullets={true}
           showNavs={true}

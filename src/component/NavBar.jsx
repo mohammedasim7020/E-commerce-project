@@ -91,7 +91,7 @@ const NavBar = (props) => {
           <h4 style={{color:"white"}}>{isLoggedIn ? data.username : ""}</h4>
 
           <Link className="link" to="/AddProduct">
-            {isLoggedIn ? <PlaylistAddCircleSharpIcon /> : ""}
+            {isLoggedIn ? <PlaylistAddCircleSharpIcon sx={{fontSize:35}}/> : ""}
           </Link>
 
           <Link to="/addToCart" className="link">
@@ -110,7 +110,7 @@ const NavBar = (props) => {
           </Link>
 
           <h4 className="btn" onClick={logoutuser}>
-            {isLoggedIn ? <LogoutSharpIcon sx={{ color: "white" }} /> : ""}
+            {isLoggedIn ? <LogoutSharpIcon sx={{ color: "white" ,fontSize:30}} /> : ""}
           </h4>
         </div>
       </div>
