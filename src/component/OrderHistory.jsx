@@ -1,34 +1,33 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const OrderHistory = () => {
-    const [cartData,setCartData] = useState([])
+  const [cartData, setCartData] = useState([]);
 
-const selector = useSelector((state)=>{
- return state.addressDetails
-})
-console.log("selector address details",selector)
-useEffect(()=>{
-  if(selector){
-    setCartData(selector)
-  }
-},[selector])
+  const selector = useSelector((state) => {
+    return state.addressDetails;
+  });
+  useEffect(() => {
+    if (selector) {
+      setCartData(selector);
+    }
+  }, [selector]);
 
   return (
     <div>
-     {cartData.map((item,index)=>{
-      return(
-        <>
-          <h1>{item.fullName}</h1>
-          <h1>{item.title}</h1>
-          
-        </>
-      )
-     })}
+      {cartData.map((item) => {
+        return (
+          <div key={item.id}>
+            <img src={item.image} alt="" width="150px" hight="150px" />
+            <p>{item.title}</p>
+            <h4>{item.fullName}</h4>
+          </div>
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default OrderHistory
+export default OrderHistory;

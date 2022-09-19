@@ -98,7 +98,7 @@ const AddToCart = () => {
   };
 
   return (
-    <>
+    <div className="page-body">
       {" "}
       <div className="flex">
         <div className="main_addtocard_div">
@@ -108,7 +108,7 @@ const AddToCart = () => {
             cartProducts.map((item, index) => {
               return (
                 <>
-                  <div key={index} className="parent">
+                  <div key={item.id} className="parent">
                     <div className="img_container">
                       <img
                         className="addToCart_img"
@@ -156,14 +156,16 @@ const AddToCart = () => {
           ""
         ) : (
           <div className="price_container">
-            <h2>Your Total is:{total}</h2>
+            <p>Price(item)</p>
+            <p>Delivery Charges   $10</p>
+            <h3>{`Amount Payable     ${total}`}</h3>
             <Button variant="contained" onClick={() => goToAddressPage()}>
               PlaceOrder
             </Button>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

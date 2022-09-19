@@ -22,6 +22,7 @@
   height: 350px;
   align-items: center;
   justify-content: center;
+  
 }
 .main_card_container:hover {
   position: relative;

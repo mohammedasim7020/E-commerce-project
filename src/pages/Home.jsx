@@ -1,31 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "@mui/material";
+import { Button, Rating } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import SimpleImageSlider from "react-simple-image-slider";
-import SortSharpIcon from '@mui/icons-material/SortSharp';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import SortSharpIcon from "@mui/icons-material/SortSharp";
+import SideBar from "../component/SideBar";
+import StarIcon from "@mui/icons-material/Star";
 
 import { ACTION_TYPES } from "../constants";
-// import SecondNavBar from "../component/SecondNavBar";
+import { images } from "../utils/imges";
 import "../All-Css-Files/home.css";
 
-const images = [
-  {
-    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/e0fcdef437f82323.jpg?q=50",
-  },
-  {
-    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/a0a5d1c6f8df28b8.jpg?q=50",
-  },
-  {
-    url: "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/1d271d50a63cc18a.jpg?q=50",
-  },
-  // { url: "image.png" },
-  // { url: "images/5.jpg" },
-  // { url: "images/6.jpg" },
-  // { url: "images/7.jpg" },
-];
 
 //Here start home page
 const Home = () => {
@@ -34,13 +19,9 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => {
-    return {
-      products: state.product,
-      // inputValue: state.input_data,
-    };
+  const products = useSelector((state) => {
+    return state.product;
   });
-  const { products } = allProducts;
 
   const handleSearch = (event) => {
     const change = event.target.value;
@@ -98,7 +79,7 @@ const Home = () => {
           <div className="for-sort">
             <h4>
               Sort
-              <SortSharpIcon />
+              <SortSharpIcon  />
             </h4>
           </div>
         </div>

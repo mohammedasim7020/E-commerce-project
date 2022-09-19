@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
+import {Badge }from "@mui/material";
 import LogoutSharpIcon from "@mui/icons-material/LogoutSharp";
 import PlaylistAddCircleSharpIcon from "@mui/icons-material/PlaylistAddCircleSharp";
 
@@ -12,29 +10,13 @@ import { LOCLA_STOREGE_LOGGED_KEY } from "../constants";
 import { Button } from "@mui/material";
 
 const NavBar = (props) => {
-  const selector = useSelector((state) => {
-    return {
-      lengthArray: state.lengthA,
-    };
+  const cart = useSelector((state) => {
+    return state.cart;
   });
-  const { lengthArray } = selector;
-  // const dispatch = useDispatch();
+
   const { isLoggedIn, data, setData } = props;
-  // const [searchData, setsearchData] = useState("");
 
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  }));
 
-  // const handleSearch = (e) => {
-  //   const search = e.target.value;
-  //   setsearchData(search);
-  // };
 
   let navigate = useNavigate();
 
@@ -44,16 +26,6 @@ const NavBar = (props) => {
     navigate("/LogIn");
   }
 
-  // const selector = useSelector((state) => {
-  //   return state.input_data;
-  // });
-
-  // const handleSearchData = (e) => {
-  //   dispatch({
-  //     type: ACTION_TYPES.HANDLE_SEARCH,
-  //     payload: { searchData },
-  //   });
-  // };
 
   const goToHome = (e) => {
     e.preventDefault();
@@ -88,29 +60,43 @@ const NavBar = (props) => {
             )}
           </Link>
 
-          <h4 style={{color:"white"}}>{isLoggedIn ? data.username : ""}</h4>
+          <h4 style={{ color: "white" }}>{isLoggedIn ? data.username : ""}</h4>
 
           <Link className="link" to="/AddProduct">
-            {isLoggedIn ? <PlaylistAddCircleSharpIcon sx={{fontSize:35}}/> : ""}
+            {isLoggedIn ? (
+              <p>
+                {" "}
+                <PlaylistAddCircleSharpIcon sx={{ fontSize: 25 }} />
+                Add Products
+              </p>
+            ) : (
+              ""
+            )}
           </Link>
 
-          <Link to="/addToCart" className="link">
+          <Link to="/addToCart">
             {isLoggedIn ? (
-              <StyledBadge badgeContent={lengthArray + 1} color="secondary">
+              <Badge color="secondary" badgeContent={cart?.length}>
                 <AddShoppingCartIcon
+                 sx={{color:"white"}}
                   onClick={() => {
                     navigate("/AddToCart");
                   }}
                 />
-                Cart
-              </StyledBadge>
+              </Badge>
             ) : (
               ""
             )}
           </Link>
 
           <h4 className="btn" onClick={logoutuser}>
-            {isLoggedIn ? <LogoutSharpIcon sx={{ color: "white" ,fontSize:30}} /> : ""}
+            {isLoggedIn ? (
+              <p className="link">
+                <LogoutSharpIcon sx={{ color: "white", fontSize: 25 }} /> LogOut
+              </p>
+            ) : (
+              ""
+            )}
           </h4>
         </div>
       </div>

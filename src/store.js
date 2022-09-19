@@ -5,7 +5,6 @@ const INITIAL_state = {
   product: [],
   input_data: "",
   cart: [],
-  lengthA: 0,
   addressDetails: [],
 };
 
@@ -43,8 +42,8 @@ const store = configureStore({
           cart: [
             ...state.cart.filter((item) => item.id !== product.id),
             { ...product, quantity: 1 },
-          ],
-          lengthA: state.cart.length,
+          ]
+        
         };
 
       case ACTION_TYPES.UPDATE_CART:
