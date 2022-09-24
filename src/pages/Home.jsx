@@ -85,7 +85,7 @@ const Home = () => {
       </section>
       <section>
         <SimpleImageSlider
-          width={1330}
+          width={1350}
           height={350}
           paddin={5}
           images={images}
