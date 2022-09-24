@@ -45,11 +45,11 @@ export default function LoginForm(props) {
   return (
     <div className="main_container_for_log">
       <Box
+      className="box"
         sx={{
-          border: 1,
-          width: 330,
-          height: 380,
-          backgroundColor: " #E6E6FA",
+          // width: 330,
+          // height: 380,
+          // backgroundColor: "white",
           // "&:hover": {
           //   backgroundColor: "",
           //   opacity: [0.9, 0.8, 0.7],

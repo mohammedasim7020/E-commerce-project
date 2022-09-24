@@ -108,7 +108,7 @@ const AddToCart = () => {
             cartProducts.map((item, index) => {
               return (
                 <>
-                  <div key={item.id} className="parent">
+                  <div key={item.id} data-aos="zoom-in" className="parent">
                     <div className="img_container">
                       <img
                         className="addToCart_img"
@@ -155,7 +155,7 @@ const AddToCart = () => {
         {cartProducts.length === 0 ? (
           ""
         ) : (
-          <div className="price_container">
+          <div className="price_container" data-aos="zoom-in">
             <p>Price(item)</p>
             <p>Delivery Charges   $10</p>
             <h3>{`Amount Payable     ${total}`}</h3>

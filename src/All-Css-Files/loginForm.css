@@ -1,21 +1,26 @@
+.box{
+  width: "330px";
+  height: "380px";
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+background-color: white;
+}
 .main_container_for_log {
- display: flex;
- align-items: center;
- justify-content: center;
- height: 30rem;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
 }
 
 .input_fileds {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
-    gap: 25px;
-    width: 250px;
-    height: 73%;
-    padding: 30px;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  gap: 25px;
+  width: 250px;
+  height: 73%;
+  padding: 30px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: larger;
 }

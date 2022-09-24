@@ -11,7 +11,6 @@ import { ACTION_TYPES } from "../constants";
 import { images } from "../utils/imges";
 import "../All-Css-Files/home.css";
 
-
 //Here start home page
 const Home = () => {
   const [newfilterdata, setnewfilterdata] = useState([]);
@@ -79,7 +78,7 @@ const Home = () => {
           <div className="for-sort">
             <h4>
               Sort
-              <SortSharpIcon  />
+              <SortSharpIcon />
             </h4>
           </div>
         </div>
@@ -103,7 +102,7 @@ const Home = () => {
             newfilterdata?.map((product, index) => {
               return (
                 <>
-                  <div key={index} className="main_card_container">
+                  <div key={index} className="main_card_container" data-aos="zoom-in" >
                     <div className="set_card_container">
                       <img
                         className="img"

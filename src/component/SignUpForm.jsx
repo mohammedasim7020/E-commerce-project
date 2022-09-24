@@ -63,16 +63,7 @@ const SignUpForm = () => {
     <div>
       <div className="container_for_box">
         <Box
-          sx={{
-            border: 1,
-            width: 370,
-            height: 500 ,
-            backgroundColor: " #E6E6FA",
-            // "&:hover": {
-            //   backgroundColor: "",
-            //   opacity: [0.9, 0.8, 0.7],
-            // },
-          }}
+         className="box2"
         >
           <h2 style={{ margin: 30 }}>SingUp</h2>
             <p style={{color:'red',}}>{error}</p>
