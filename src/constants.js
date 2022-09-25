@@ -13,6 +13,8 @@ export const ACTION_TYPES = {
     HANDLE_SEARCH:"handleSearch",
     ADD_TO_CART: "Add-To-Cart",
     UPDATE_CART:"Upadate-cart",
-    HANDLE_REMOVE:"handle-remove"
+    HANDLE_REMOVE:"handle-remove",
+    ADDRESS_DETAILS:"addressDetails",
+    ORDER_ITEM:"order-item"
 
 }

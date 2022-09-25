@@ -1,0 +1,25 @@
+.main-div {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+  width: 80%;
+}
+.wraper {
+  /* border: 1px solid red; */
+}
+.filterd-products {
+  border: 1px solid black;
+  width: 12rem;
+  height: 20rem;
+}
+.heading {
+  -webkit-line-clamp: 1;
+}
+.product-list {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+
+  height: 8rem;
+  margin: 1rem;
+}

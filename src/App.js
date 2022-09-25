@@ -39,7 +39,7 @@ function App() {
     const fetchedData = fetchAllProducts();
     fetchedData.then((res) => {
       const data = res.data;
-      console.log(data);
+
       dispatch({
         type: ACTION_TYPES.ADD_PRODUCTS,
         payload: { data },

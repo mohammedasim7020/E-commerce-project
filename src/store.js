@@ -6,6 +6,7 @@ const INITIAL_state = {
   input_data: "",
   cart: [],
   addressDetails: [],
+
 };
 
 const store = configureStore({
@@ -42,8 +43,7 @@ const store = configureStore({
           cart: [
             ...state.cart.filter((item) => item.id !== product.id),
             { ...product, quantity: 1 },
-          ]
-        
+          ],
         };
 
       case ACTION_TYPES.UPDATE_CART:
@@ -60,11 +60,12 @@ const store = configureStore({
           cart: [...state.cart.filter((item) => item !== removeProduct)],
         };
 
-      case "addressDetails":
-        const { cart, addressDetails } = payload;
-        return {
+      case ACTION_TYPES.ADDRESS_DETAILS:
+        const {orderItem} = payload;
+         return {
           ...state,
-          addressDetails: [...state.addressDetails, ...cart, addressDetails],
+          addressDetails:[...state.addressDetails,orderItem],
+          cart: [],
         };
 
       default:

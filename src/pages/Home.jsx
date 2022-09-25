@@ -4,12 +4,12 @@ import { Button, Rating } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import SimpleImageSlider from "react-simple-image-slider";
 import SortSharpIcon from "@mui/icons-material/SortSharp";
-import SideBar from "../component/SideBar";
 import StarIcon from "@mui/icons-material/Star";
 
 import { ACTION_TYPES } from "../constants";
 import { images } from "../utils/imges";
 import "../All-Css-Files/home.css";
+import { useNavigate } from "react-router-dom";
 
 //Here start home page
 const Home = () => {
@@ -17,10 +17,11 @@ const Home = () => {
   const [searchData, setsearchData] = useState("");
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const products = useSelector((state) => {
     return state.product;
   });
+  // console.log(products)
 
   const handleSearch = (event) => {
     const change = event.target.value;
@@ -64,6 +65,7 @@ const Home = () => {
             </Button>
             <Button onClick={() => filterItem("jewelery")}>Jewellery</Button>
           </div>
+
           <div className="left-side-nav">
             <TextField
               sx={{ width: "90rem" }}
@@ -85,9 +87,9 @@ const Home = () => {
       </section>
       <section>
         <SimpleImageSlider
-          width={1350}
-          height={350}
-          paddin={5}
+          width={1330}
+          height={360}
+          // paddin={5}
           images={images}
           showBullets={true}
           showNavs={true}
@@ -102,7 +104,11 @@ const Home = () => {
             newfilterdata?.map((product, index) => {
               return (
                 <>
-                  <div key={index} className="main_card_container" data-aos="zoom-in" >
+                  <div
+                    key={index}
+                    className="main_card_container"
+                    data-aos="zoom-in"
+                  >
                     <div className="set_card_container">
                       <img
                         className="img"

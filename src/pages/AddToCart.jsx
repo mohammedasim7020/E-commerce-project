@@ -105,7 +105,7 @@ const AddToCart = () => {
           {cartProducts.length === 0 ? (
             <div>No Product Available</div>
           ) : (
-            cartProducts.map((item, index) => {
+            cartProducts.map((item) => {
               return (
                 <>
                   <div key={item.id} data-aos="zoom-in" className="parent">

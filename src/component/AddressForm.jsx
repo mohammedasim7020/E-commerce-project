@@ -3,11 +3,11 @@ import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
+import { ACTION_TYPES } from "../constants";
 import updateInputValue from "../utils/genral";
 import "../All-Css-Files/address-form.css";
 
@@ -53,15 +53,17 @@ const AddressForm = () => {
   });
 
   const addressData = () => {
+    const orderItem = {
+      item:[...cart],
+      formData:obj
+    }
     dispatch({
-      type: "addressDetails",
-      payload: {
-        cart,
-        addressDetails: obj,
-      },
+      type: ACTION_TYPES.ADDRESS_DETAILS,
+      payload:{ orderItem}
     });
     navigate("/orderHistory");
   };
+
   return (
     <div className="form_box">
       <Box
